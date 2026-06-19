@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>省力化投資補助金（一般型） 事業計画書 執筆ガイド｜Essencimo</title>
+<style>
+  :root{
+    --navy:#0f2742; --navy2:#1b3a5c; --navy-soft:#e8edf3;
+    --gold:#f6c000; --gold-deep:#caa000; --gold-soft:rgba(246,192,0,.13); --gold-line:rgba(246,192,0,.45);
+    --bg:#f7f8fa; --card:#fff; --line:#e2e6ee; --line2:#eef1f5;
+    --ink:#1c2330; --sub:#5a6477; --mut:#8a93a3;
+    --ok:#1f9d6b; --ok-soft:#e9f6ef;
+    --warn:#c8780a; --warn-soft:#fdf3e2;
+    --bad:#d9483b; --bad-soft:#fbe9e6;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"BIZ UDPGothic","BIZ UDPゴシック","Noto Sans JP","Meiryo","Hiragino Kaku Gothic ProN",sans-serif;
+    color:var(--ink); background:var(--bg); margin:0; line-height:1.8; font-size:14.5px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--navy2);}
+
+  /* ===== Header ===== */
+  header.top{
+    background:linear-gradient(120deg,var(--navy) 0%,var(--navy2) 100%);
+    color:#fff; padding:22px 30px 20px;
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.5px; font-size:18px;}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--gold);display:inline-block;box-shadow:0 0 0 3px rgba(246,192,0,.25);}
+  header.top h1{font-size:22px; margin:12px 0 4px; font-weight:800;}
+  header.top .lead{color:#b9c6d6; font-size:13px; margin:0;}
+  header.top .meta{margin-top:10px; font-size:11.5px; color:#9fb0c4;}
+  .ribbon{display:inline-block;background:var(--gold-soft);color:var(--gold);border:1px solid var(--gold-line);
+    border-radius:999px;padding:2px 12px;font-size:11.5px;font-weight:700;}
+
+  /* ===== Tabs ===== */
+  .tabbar{position:sticky; top:0; z-index:30; background:var(--navy); padding:0 18px;
+    display:flex; gap:2px; flex-wrap:wrap; box-shadow:0 2px 10px rgba(15,39,66,.18);}
+  .tabbar button{
+    appearance:none; border:0; background:transparent; color:#aebccd; cursor:pointer;
+    font-family:inherit; font-size:13.5px; font-weight:700; padding:14px 18px 12px;
+    border-bottom:3px solid transparent; transition:.15s; white-space:nowrap;
+  }
+  .tabbar button .n{display:inline-block;width:20px;height:20px;line-height:20px;text-align:center;
+    background:rgba(255,255,255,.12); border-radius:50%; font-size:11px; margin-right:7px;}
+  .tabbar button:hover{color:#fff; background:rgba(255,255,255,.05);}
+  .tabbar button.active{color:#fff; border-bottom-color:var(--gold);}
+  .tabbar button.active .n{background:var(--gold); color:var(--navy);}
+
+  .wrap{max-width:1060px; margin:0 auto; padding:26px 26px 90px;}
+  .panel{display:none; animation:fade .25s ease;}
+  .panel.active{display:block;}
+  @keyframes fade{from{opacity:0; transform:translateY(6px);}to{opacity:1; transform:none;}}
+
+  /* ===== Headings ===== */
+  h2.sec{font-size:20px; margin:6px 0 4px; font-weight:800; display:flex; align-items:center; gap:11px;}
+  h2.sec::before{content:""; width:6px; height:24px; background:var(--gold); border-radius:3px; display:inline-block;}
+  .sec-sub{color:var(--sub); font-size:13px; margin:0 0 18px; padding-left:17px;}
+  h3.blk{font-size:16px; margin:26px 0 10px; padding-left:11px; border-left:4px solid var(--navy2); font-weight:800;}
+
+  .card{background:var(--card); border:1px solid var(--line); border-radius:13px; padding:18px 22px; margin:14px 0; box-shadow:0 1px 2px rgba(20,30,45,.03);}
+  .card h4{margin:2px 0 8px; font-size:14.5px; color:var(--navy); font-weight:800;}
+  p{margin:8px 0;}
+  ul.clean{margin:8px 0; padding-left:20px;} ul.clean li{margin:5px 0;}
+
+  /* ===== Step / structure list ===== */
+  .struct{display:grid; gap:12px;}
+  .struct .row{display:grid; grid-template-columns:118px 1fr; gap:0; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#fff;}
+  .struct .row .tag{background:var(--navy); color:#fff; padding:14px 14px; font-weight:800; font-size:13px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.4;}
+  .struct .row .tag.x{background:var(--navy2);}
+  .struct .row .tag.s3{background:#33691e;}
+  .struct .row .body{padding:13px 16px;}
+  .struct .row .body b{color:var(--navy);}
+  .fmt{display:inline-block; font-size:10.5px; font-weight:700; border-radius:5px; padding:1px 7px; margin-left:6px; vertical-align:1px;}
+  .fmt.word{background:#e7eefb; color:#2a52be; border:1px solid #cdddf7;}
+  .fmt.excel{background:#e7f4ec; color:#1f7a45; border:1px solid #cfe9d3;}
+
+  /* chapter chips inside structure */
+  .chips{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;}
+  .chip{font-size:11.5px; background:var(--navy-soft); color:var(--navy); border:1px solid #d4dde8; border-radius:6px; padding:2px 9px;}
+
+  /* ===== Callouts ===== */
+  .callout{border-left:5px solid var(--navy2); background:#f3f6fa; border-radius:0 10px 10px 0; padding:12px 16px; margin:14px 0; font-size:13.5px;}
+  .callout .lab{font-weight:800; font-size:12px; letter-spacing:.4px; display:block; margin-bottom:3px;}
+  .callout.warn{border-color:var(--warn); background:var(--warn-soft);} .callout.warn .lab{color:var(--warn);}
+  .callout.bad{border-color:var(--bad); background:var(--bad-soft);} .callout.bad .lab{color:var(--bad);}
+  .callout.gold{border-color:var(--gold-deep); background:var(--gold-soft);} .callout.gold .lab{color:var(--gold-deep);}
+  .callout.def{border-color:var(--navy2); background:#eef3f8;} .callout.def .lab{color:var(--navy2);}
+
+  /* ===== その3（Excel）記入箇所ノート ===== */
+  .x3{display:flex; gap:9px; align-items:flex-start; background:#eef7f0; border:1px solid #cfe6d5; border-left:4px solid #33691e;
+    border-radius:0 9px 9px 0; padding:9px 13px; margin:12px 0; font-size:13px;}
+  .x3 b{color:#2c5e1a;}
+  .x3 .xlab{flex:0 0 auto; font-size:10.5px; font-weight:800; color:#fff; background:#33691e; border-radius:5px; padding:2px 7px; margin-top:2px; white-space:nowrap;}
+
+  /* ===== Checkbox list ===== */
+  .checks{margin:12px 0; display:grid; gap:8px;}
+  .checks .toolbar{display:flex; justify-content:flex-end; gap:8px; margin-bottom:2px;}
+  .checks .toolbar button{font-family:inherit; font-size:11.5px; border:1px solid var(--line); background:#fff; color:var(--sub);
+    border-radius:7px; padding:4px 10px; cursor:pointer;}
+  .checks .toolbar button:hover{background:#f1f4f8;}
+  label.chk{display:flex; gap:11px; align-items:flex-start; background:#fff; border:1px solid var(--line);
+    border-radius:10px; padding:11px 14px; cursor:pointer; transition:.12s; font-size:13.5px;}
+  label.chk:hover{border-color:var(--gold-line); background:#fffdf4;}
+  label.chk input{appearance:none; flex:0 0 auto; width:20px; height:20px; border:2px solid #c4cdda; border-radius:6px;
+    margin-top:1px; cursor:pointer; position:relative; transition:.12s;}
+  label.chk input:checked{background:var(--gold); border-color:var(--gold);}
+  label.chk input:checked::after{content:"✓"; position:absolute; inset:0; color:var(--navy); font-weight:900;
+    font-size:14px; display:flex; align-items:center; justify-content:center;}
+  label.chk input:checked ~ span{color:var(--mut); text-decoration:line-through;}
+  label.chk .k{flex:0 0 auto; font-size:10.5px; font-weight:800; color:var(--navy2); background:var(--navy-soft);
+    border-radius:5px; padding:1px 6px; margin-top:2px;}
+
+  /* ===== Accordion (chapters) ===== */
+  .acc{border:1px solid var(--line); border-radius:13px; margin:12px 0; overflow:hidden; background:#fff;}
+  .acc>summary{list-style:none; cursor:pointer; padding:16px 20px; display:flex; align-items:center; gap:13px;
+    font-weight:800; font-size:15px; color:var(--navy); background:#fff;}
+  .acc>summary::-webkit-details-marker{display:none;}
+  .acc>summary .num{flex:0 0 auto; width:28px; height:28px; border-radius:8px; background:var(--navy); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:13px;}
+  .acc>summary .arw{margin-left:auto; color:var(--mut); transition:.2s; font-size:13px;}
+  .acc[open]>summary{border-bottom:1px solid var(--line2); background:#fbfcfe;}
+  .acc[open]>summary .arw{transform:rotate(90deg);}
+  .acc>summary .where{font-size:11px; font-weight:700; color:var(--sub); background:var(--navy-soft); border-radius:5px; padding:1px 7px;}
+  .acc .inner{padding:6px 20px 18px;}
+  .lab-points{font-size:12px; font-weight:800; color:var(--navy2); letter-spacing:.4px; margin:14px 0 4px;}
+  .lab-cau{font-size:12px; font-weight:800; color:var(--warn); letter-spacing:.4px; margin:16px 0 4px;}
+
+  /* ===== Tables ===== */
+  table{width:100%; border-collapse:collapse; font-size:13px; margin:10px 0;}
+  th,td{border:1px solid var(--line); padding:8px 11px; text-align:left; vertical-align:top;}
+  th{background:#f0f3f8; font-weight:800; color:var(--navy);}
+  .formula{font-family:"Consolas","Courier New",monospace; background:#f3f6fa; border:1px solid var(--line);
+    border-radius:7px; padding:2px 8px; font-size:13px; color:var(--navy);}
+
+  /* ===== Glossary ===== */
+  .gloss{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .gloss .term{background:#fff; border:1px solid var(--line); border-radius:12px; padding:15px 17px;}
+  .gloss .term .t{font-weight:800; color:var(--navy); font-size:14.5px; display:flex; align-items:center; gap:8px;}
+  .gloss .term .t .star{color:var(--gold-deep);}
+  .gloss .term .d{font-size:13px; color:var(--ink); margin-top:6px;}
+  .gloss .term .d em{font-style:normal; background:var(--gold-soft); padding:0 3px; border-radius:3px;}
+
+  .pill{display:inline-block; font-size:11px; font-weight:800; border-radius:999px; padding:2px 10px;}
+  .pill.must{background:var(--bad-soft); color:var(--bad);}
+  .pill.key{background:var(--gold-soft); color:var(--gold-deep);}
+
+  footer{max-width:1060px; margin:0 auto; padding:18px 26px 40px; color:var(--mut); font-size:11.5px; border-top:1px solid var(--line);}
+
+  @media(max-width:720px){
+    .gloss{grid-template-columns:1fr;}
+    .struct .row{grid-template-columns:92px 1fr;}
+    .wrap{padding:20px 16px 80px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand"><span class="dot"></span>Essencimo <span style="font-weight:600;color:#9fb0c4;font-size:13px;">Partner Portal</span></div>
+  <h1>省力化投資補助金（一般型）　事業計画書 執筆ガイド</h1>
+  <p class="lead">執筆パートナーの皆さまが、ミスのない事業計画書を再現性高く作成するための要点・注意点・用語定義をまとめています。</p>
+  <div class="meta"><span class="ribbon">執筆パートナー向け</span>　&nbsp;最終更新：2026年6月　／　対象：省力化投資補助金（一般型）　その1・その2・その3</div>
+</header>
+
+<nav class="tabbar" id="tabbar">
+  <button class="active" data-tab="t1"><span class="n">1</span>テンプレート構成</button>
+  <button data-tab="t2"><span class="n">2</span>全体の注意点</button>
+  <button data-tab="t3"><span class="n">3</span>各章のポイント・注意点</button>
+  <button data-tab="t4"><span class="n">4</span>用語集</button>
+</nav>
+
+<div class="wrap">
+
+<!-- ================= TAB 1 ================= -->
+<section class="panel active" id="t1">
+  <h2 class="sec">テンプレートの全体構成</h2>
+  <p class="sec-sub">事業計画書は「その1・その2（Word）」と「その3（Excel）」の3部構成です。まず全体像と、どの数字がどこを支配するかを把握してください。</p>
+
+  <div class="struct">
+    <div class="row">
+      <div class="tag">その1・その2<span class="fmt word">Word</span></div>
+      <div class="body">
+        <b>事業計画書 本文（.docx）</b>。ネストされたテーブル構造で、定性的な説明はすべてここに書きます。会社概要から実施体制・スケジュールまでを、次の章立てで構成します。
+        <div class="chips">
+          <span class="chip">① 会社概要</span><span class="chip">② SWOT分析</span><span class="chip">③ 経営課題</span>
+          <span class="chip">④ 具体的取組内容（設備・システム）</span><span class="chip">⑤ 省力化効果（BEFORE/AFTER）</span>
+          <span class="chip">⑥ 労働生産性向上・賃上げ</span><span class="chip">⑦ 財務計画</span><span class="chip">⑧ 実施体制・スケジュール</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="tag s3">その3<span class="fmt excel">Excel</span></div>
+      <div class="body">
+        <b>数値計画（.xlsx）</b>。提出する最終様式です。損益計算書・付加価値額・従業員数・給与支給総額を、基準年度から3年目まで年度ごとに記入します（構成は下表）。本文の数値はこのファイルと一致させます。
+      </div>
+    </div>
+    <div class="row">
+      <div class="tag x">別紙</div>
+      <div class="body">
+        <b>別紙1＝省力化計算</b>（削減時間の根拠を示す資料。その3に含まれます）、<b>別紙2＝業務プロセス図</b>（BEFORE/AFTERの工程図）。本文・別紙1・別紙2・数値計画の「削減時間」は<b>必ず同一の数字</b>でそろえます。
+      </div>
+    </div>
+  </div>
+
+  <h3 class="blk">その3（数値計画 Excel）の構成</h3>
+  <p class="sec-sub" style="padding-left:0;">基準年度から3年目までを年度ごとに記入します。付加価値額・労働生産性・CAGRなどは、入力した値から自動で計算されます。</p>
+  <table>
+    <tr><th style="width:200px;">記入ブロック</th><th>主な内容</th><th style="width:130px;">関連する章</th></tr>
+    <tr><td>損益計算書</td><td>売上高・売上原価・販管費・営業利益（基準年度〜3年目）</td><td>⑦ 財務計画</td></tr>
+    <tr><td>付加価値額</td><td>営業利益 ＋ 人件費 ＋ 減価償却費（自動計算）</td><td>⑥ 労働生産性</td></tr>
+    <tr><td>従業員数</td><td>役員・正社員・パート等の人数（年度ごと）</td><td>① 会社概要／⑥</td></tr>
+    <tr><td>給与支給総額</td><td>給与・賞与・手当の総額と1人当たり給与（賃上げの指標）</td><td>⑥ 賃上げ</td></tr>
+    <tr><td>労働生産性</td><td>付加価値額 ÷ 従業員数（自動計算）</td><td>⑥ 労働生産性</td></tr>
+    <tr><td>省力化計算（別紙1）</td><td>BEFORE/AFTERの作業時間と年間削減時間</td><td>⑤ 省力化効果</td></tr>
+  </table>
+
+  <div class="callout gold">
+    <span class="lab">◆ 最重要：数値はExcel数値計画に合わせる</span>
+    本文に登場するすべての数値（売上高・営業利益・付加価値額・労働生産性・給与・従業員数・削減時間）は、Excel数値計画の値と一致させます。食い違ったときは本文側をExcelに合わせて直します。記憶や下書きの数字のまま本文を書かないでください。
+  </div>
+
+  <h3 class="blk">執筆を始める前に決める3点</h3>
+  <div class="card">
+    <ul class="clean">
+      <li><b>口調</b>：「である調」「ですます調」のどちらでもよいが、文書全体で必ず統一する。</li>
+      <li><b>年度の起点</b>：申請企業の<b>決算月</b>と<b>補助事業の終了予定日</b>を先に確定し、基準年度・1〜3年目の具体的な決算期を算出する（→タブ4「用語集」参照）。</li>
+      <li><b>参照する根拠資料</b>：公募要領（最新回）、ヒアリングまとめ、直近の決算書（損益計算書）を手元に揃える。</li>
+    </ul>
+  </div>
+
+  <div class="callout">
+    <span class="lab">この章で意識すること</span>
+    省力化補助金は「省力化効果（時間削減）」が核心です。④で導入する仕組み → ⑤でどれだけ時間が減るか → ⑥でその時間がどう付加価値・賃上げにつながるか、という一本の線が、③の課題から⑧の数値計画まで断絶なくつながっているかを常に確認しながら書きます。
+  </div>
+</section>
+
+<!-- ================= TAB 2 ================= -->
+<section class="panel" id="t2">
+  <h2 class="sec">事業計画書作成 全体の注意点</h2>
+  <p class="sec-sub">章を問わず守るルールです。チェックボックスは提出前の最終確認に使ってください（チェック状態はこの端末に保存されます）。</p>
+
+  <h3 class="blk">A. 表記・用語の統一</h3>
+  <p class="sec-sub" style="padding-left:0;">特定の語が正解というわけではありません。どの呼称を選んでもよいので、文書全体で一つにそろっていることが大切です。</p>
+  <div class="checks">
+    <div class="toolbar"><button data-act="all" data-grp="g-hyoki">すべてチェック</button><button data-act="clear" data-grp="g-hyoki">クリア</button></div>
+    <label class="chk"><input type="checkbox" data-grp="g-hyoki"><span>自社の呼称（「当社」「弊社」など）が文書全体で一つに統一されている（正式名称は会社概要で示す程度にとどめる）。</span></label>
+    <label class="chk"><input type="checkbox" data-grp="g-hyoki"><span>事業の呼称（「本事業」「本取組」など）が文書全体で統一されている。</span></label>
+    <label class="chk"><input type="checkbox" data-grp="g-hyoki"><span>同じ対象を途中で別の語に言い換えていない（システム名・設備名・部署名の表記ゆれ）。</span></label>
+    <label class="chk"><input type="checkbox" data-grp="g-hyoki"><span>数字の単位・桁区切り（千円／百万円など）が全体で統一されている。</span></label>
+  </div>
+
+  <h3 class="blk">B. 数値整合の原則</h3>
+  <div class="callout gold">
+    <span class="lab">◆ 数値はExcel数値計画に合わせる</span>
+    本文の数値は必ずExcelと突き合わせます。丸め表現（「約○億○千万円」）も原数値と対照して妥当か確認します。
+  </div>
+  <div class="checks">
+    <div class="toolbar"><button data-act="all" data-grp="g-num">すべてチェック</button><button data-act="clear" data-grp="g-num">クリア</button></div>
+    <label class="chk"><input type="checkbox" data-grp="g-num"><span>売上高・営業利益・付加価値額・労働生産性・給与支給総額・従業員数が、本文とExcelで一致している。</span></label>
+    <label class="chk"><input type="checkbox" data-grp="g-num"><span>「削減時間」が <b>本文・別紙1（省力化計算）・別紙2（プロセス図）・数値計画</b> で完全に一致している。</span></label>
+    <label class="chk"><input type="checkbox" data-grp="g-num"><span>CAGR（年平均成長率）の本文記載値が、Excelから再計算した値と一致している。</span></label>
+    <label class="chk"><input type="checkbox" data-grp="g-num"><span>基準年度・1〜3年目の年度ラベルが、本文・スケジュール・Excelで同じ定義になっている。</span></label>
+  </div>
+
+  <h3 class="blk">C. AI臭の排除（6パターン）</h3>
+  <p class="sec-sub" style="padding-left:0;">AIが書いたと一目で分かる表現は審査員の印象を損ないます。次の6類型を機械的に潰します。</p>
+  <table>
+    <tr><th style="width:160px;">パターン</th><th>具体的に避けること</th></tr>
+    <tr><td><b>① 視覚的な記号の残存</b></td><td>「**太字**」・ダッシュ（—）での言い換え・スラッシュ（/）での並列・コロン直後の半角スペース・括弧（）での補足の多用</td></tr>
+    <tr><td><b>② 文のリズムの単調さ</b></td><td>同じ語尾の3連続以上／「さらに」「また」「したがって」「そのため」「結果として」の多用／段落の閉じ方が毎回同じ</td></tr>
+    <tr><td><b>③ 説明書っぽい導入</b></td><td>前置きが長い（結論・事実から書く）／「本章では〜を説明します」等の構造宣言／「次項で詳しく示します」等の誘導文</td></tr>
+    <tr><td><b>④ 事なかれ主義</b></td><td>「と考えられる」「可能性がある」等の責任回避の枕詞を多用しない。断言できる事実は断言する</td></tr>
+    <tr><td><b>⑤ 抽象語・万能語</b></td><td>「最大化」「最適化」「価値を創出」「本質」「エコシステム」「シナジー」「イノベーション」「ボトルネック」「暗黙知」など</td></tr>
+    <tr><td><b>⑥ 変な比喩・決まり文句</b></td><td>「羅針盤」「土台」「柱」「車の両輪」「潤滑油」「エンジン」「DNA」など</td></tr>
+  </table>
+  <div class="checks">
+    <div class="toolbar"><button data-act="all" data-grp="g-ai">すべてチェック</button><button data-act="clear" data-grp="g-ai">クリア</button></div>
+    <label class="chk"><input type="checkbox" data-grp="g-ai"><span>本文に「**」「—」「/」での並列、コロン後の半角スペースが残っていない。</span></label>
+    <label class="chk"><input type="checkbox" data-grp="g-ai"><span>同じ語尾の3連続、接続詞の多用がない。結論から書けている。</span></label>
+    <label class="chk"><input type="checkbox" data-grp="g-ai"><span>禁止の抽象語・比喩（⑤⑥のリスト）を使っていない。</span></label>
+  </div>
+
+  <h3 class="blk">D. 禁止表現チェックリスト</h3>
+  <div class="checks">
+    <div class="toolbar"><button data-act="all" data-grp="g-ban">すべてチェック</button><button data-act="clear" data-grp="g-ban">クリア</button></div>
+    <label class="chk"><input type="checkbox" data-grp="g-ban"><span>誘導文（「次項で詳しく示します」など）が残っていない。</span></label>
+    <label class="chk"><input type="checkbox" data-grp="g-ban"><span>「●●（要確認）」のような括弧書きが残っていない（確定値のみ記載）。</span></label>
+    <label class="chk"><input type="checkbox" data-grp="g-ban"><span>前段の章（会社概要・SWOT・経営課題）に、<b>本事業固有の設備名・システム名を先出ししていない</b>。</span></label>
+  </div>
+
+  <h3 class="blk">E. Wordフォーマットの崩れ</h3>
+  <div class="callout warn">
+    <span class="lab">⚠ ネストされたテーブル構造のため崩れやすい</span>
+    見た目で気づきにくい書式残りに注意します。
+  </div>
+  <div class="checks">
+    <div class="toolbar"><button data-act="all" data-grp="g-fmt">すべてチェック</button><button data-act="clear" data-grp="g-fmt">クリア</button></div>
+    <label class="chk"><input type="checkbox" data-grp="g-fmt"><span>意図しない<b>太字・下線</b>が残っていない。</span></label>
+    <label class="chk"><input type="checkbox" data-grp="g-fmt"><span>本文のフォントサイズが概ね統一されている（極端なサイズの混在がない）。</span></label>
+    <label class="chk"><input type="checkbox" data-grp="g-fmt"><span>見出し行と本文の間に不要な空行がない。</span></label>
+    <label class="chk"><input type="checkbox" data-grp="g-fmt"><span>SWOT分析テーブルが左詰め・「・タイトル／説明」構造で崩れていない。</span></label>
+  </div>
+</section>
+
+<!-- ================= TAB 3 ================= -->
+<section class="panel" id="t3">
+  <h2 class="sec">各章のポイント・注意点</h2>
+  <p class="sec-sub">章をクリックすると展開します。<span style="color:var(--navy2);font-weight:700;">青ラベル＝書き方のポイント</span>、<span style="color:var(--warn);font-weight:700;">橙ラベル＝提出前チェック（チェックボックス）</span>です。</p>
+
+  <!-- 1 会社概要 -->
+  <details class="acc">
+    <summary><span class="num">①</span>会社概要<span class="where">その1（Word）＋ その3</span><span class="arw">▶</span></summary>
+    <div class="inner">
+      <div class="lab-points">▍書き方のポイント</div>
+      <ul class="clean">
+        <li>会社の沿革・事業内容・強みを簡潔に。正式名称はここで1回、以降は「当社」。</li>
+        <li>従業員数・拠点は、Excel数値計画および直近決算と一致させる。</li>
+        <li>住所は市区町村レベルまで（番地・建物名は書かない）。</li>
+      </ul>
+      <div class="callout def"><span class="lab">用語：直近実績テーブル</span>過去3期分の売上・利益・従業員数等を載せる表。<b>「YYYY年MM月期」</b>の形式で年度を統一します。</div>
+      <div class="x3"><span class="xlab">その3</span><span>会社概要の従業員数は、その3の<b>従業員数欄（基準年度）</b>と一致させます。</span></div>
+      <div class="lab-cau">▍提出前チェック</div>
+      <div class="checks">
+        <label class="chk"><span class="k">H</span><input type="checkbox" data-grp="c1"><span>直近実績テーブルの年度ラベルが「YYYY年MM月期」で統一され、<b>実在する決算期</b>になっている。</span></label>
+        <label class="chk"><span class="k">H</span><input type="checkbox" data-grp="c1"><span>各期の数値が、添付する<b>決算書（損益計算書）と一致</b>している。</span></label>
+        <label class="chk"><span class="k">H</span><input type="checkbox" data-grp="c1"><span>「●●名」等のプレースホルダや、社名変更・決算期変更の未反映が残っていない。</span></label>
+      </div>
+    </div>
+  </details>
+
+  <!-- 2 SWOT -->
+  <details class="acc">
+    <summary><span class="num">②</span>SWOT分析<span class="where">その1 / Word</span><span class="arw">▶</span></summary>
+    <div class="inner">
+      <div class="lab-points">▍書き方のポイント</div>
+      <ul class="clean">
+        <li>強み（S）・弱み（W）・機会（O）・脅威（T）を、後段の経営課題・本事業へ自然につながる材料として書く。</li>
+        <li>各項目は「・タイトル／説明」の構造で、左詰め・簡潔に。</li>
+      </ul>
+      <div class="lab-cau">▍提出前チェック</div>
+      <div class="checks">
+        <label class="chk"><span class="k">禁</span><input type="checkbox" data-grp="c2"><span>SWOTの中に<b>本事業固有の設備名・システム名を先出ししていない</b>（前段で正解を言わない）。</span></label>
+        <label class="chk"><span class="k">E</span><input type="checkbox" data-grp="c2"><span>テーブルのフォーマット（左詰め・構造）が崩れていない。</span></label>
+        <label class="chk"><span class="k">論</span><input type="checkbox" data-grp="c2"><span>SWOTの弱み・脅威が、次章の「経営課題」と矛盾なくつながっている。</span></label>
+      </div>
+    </div>
+  </details>
+
+  <!-- 3 経営課題 -->
+  <details class="acc">
+    <summary><span class="num">③</span>経営課題<span class="where">その1 / Word</span><span class="arw">▶</span></summary>
+    <div class="inner">
+      <div class="lab-points">▍書き方のポイント</div>
+      <ul class="clean">
+        <li>解決すべき課題を<b>定量的に</b>書く（例：「1日あたり約○○件の問い合わせ対応に△時間」）。この数字が後段のBEFOREの根拠になる。</li>
+        <li>課題は本事業で解決するものに絞り、課題の数と④の解決手段が1対1で対応するように整理する。</li>
+      </ul>
+      <div class="callout warn"><span class="lab">⚠ 一発NGに注意</span>課題の<b>解決そのものを他社へ外注・委託</b>する構図にしない。外部に開発を委託する場合でも、運用・遂行の主体は当社であることが前提です。</div>
+      <div class="lab-cau">▍提出前チェック</div>
+      <div class="checks">
+        <label class="chk"><span class="k">C</span><input type="checkbox" data-grp="c3"><span>課題の定量値（件数・時間）が、後段の<b>BEFORE工程データと矛盾していない</b>。</span></label>
+        <label class="chk"><span class="k">禁</span><input type="checkbox" data-grp="c3"><span>本事業固有の設備名・システム名を、まだ出していない。</span></label>
+        <label class="chk"><span class="k">J</span><input type="checkbox" data-grp="c3"><span>課題解決を丸ごと外注する構図になっていない。</span></label>
+        <label class="chk"><span class="k">論</span><input type="checkbox" data-grp="c3"><span>挙げた課題の数だけ、④で解決手段が用意されている。</span></label>
+      </div>
+    </div>
+  </details>
+
+  <!-- 4 具体的取組内容 -->
+  <details class="acc">
+    <summary><span class="num">④</span>具体的取組内容（導入する設備・システム）<span class="where">その1・その2 / Word</span><span class="arw">▶</span></summary>
+    <div class="inner">
+      <div class="lab-points">▍書き方のポイント</div>
+      <ul class="clean">
+        <li>導入する設備・システムが、③の各課題を<b>どう解決するか</b>を機能ベースで説明する。</li>
+        <li>「自動化」と「効率化」を、導入する機能と対応させて区別して書く。</li>
+      </ul>
+      <div class="callout def"><span class="lab">用語：オーダーメイド設備</span>事業者の業務に応じて<b>専用設計</b>された設備。汎用設備でも周辺機器・構成・機能が変わる場合や複数を組み合わせる場合は該当します。<em>単に汎用設備を単体導入する事業は対象外</em>です。</div>
+      <div class="callout bad"><span class="lab">✖ 一発NG（適格性）：対外向け販売を書かない</span>自社の省力化を超えて、開発したシステム・ノウハウを<b>他社へ提供・外販・SaaS化・コンサル展開</b>する構想は対象外要件に抵触します。「将来ビジョン」「波及効果」の章に紛れ込みやすいので要注意。</div>
+      <div class="x3"><span class="xlab">その3</span><span>導入設備の取得価額は、その3の<b>減価償却費</b>（付加価値額の構成要素）の前提になります。金額は申請書全体で一致させます。</span></div>
+      <div class="lab-cau">▍提出前チェック</div>
+      <div class="checks">
+        <label class="chk"><span class="k">K</span><input type="checkbox" data-grp="c4"><span>中核設備が<b>型番付きの汎用カタログ品の単体導入</b>になっていない（なっている場合、汎用品では課題に対応できない理由を明記）。</span></label>
+        <label class="chk"><span class="k">K</span><input type="checkbox" data-grp="c4"><span>汎用設備ベースの場合、<b>専用設計・カスタマイズ部分</b>と<b>カタログ標準部分</b>を区別して記述した（オプション羅列を「カスタマイズ」と称していない）。</span></label>
+        <label class="chk"><span class="k">K</span><input type="checkbox" data-grp="c4"><span>設備の開発・製造主体の専門性・実績が、その設備分野で妥当である。</span></label>
+        <label class="chk"><span class="k">K</span><input type="checkbox" data-grp="c4"><span>「汎用製品を採用」等、<b>オーダーメイド性を自ら否定する記述</b>が残っていない。</span></label>
+        <label class="chk"><span class="k">J</span><input type="checkbox" data-grp="c4"><span>対外向け販売・外販・SaaS化・コンサル展開の記述がない。国の他制度との重複もない。</span></label>
+        <label class="chk"><span class="k">C</span><input type="checkbox" data-grp="c4"><span>説明した機能が、⑤のAFTER工程・削減効果と対応している。</span></label>
+      </div>
+    </div>
+  </details>
+
+  <!-- 5 省力化効果 -->
+  <details class="acc">
+    <summary><span class="num">⑤</span>省力化効果（BEFORE / AFTER）<span class="where">その2 ＋ その3（別紙1）＋ 別紙2</span><span class="arw">▶</span></summary>
+    <div class="inner">
+      <div class="callout gold"><span class="lab">◆ ここが本制度の核心</span>BEFORE（導入前）とAFTER（導入後）の工程・作業時間を並べ、削減時間を算出します。<b>本文・別紙1（省力化計算）・別紙2（プロセス図）・数値計画の削減時間は完全に同一の数字</b>でそろえます。</div>
+      <div class="x3"><span class="xlab">その3</span><span>BEFORE/AFTERの作業時間と年間削減時間は、その3の<b>省力化計算（別紙1）</b>に入力します。本文・別紙2の数値はここと一致させます。</span></div>
+      <div class="lab-points">▍書き方のポイント</div>
+      <ul class="clean">
+        <li>BEFORE工程の件数・時間は、③経営課題の定量記述と一致させる。</li>
+        <li>AFTER工程は、④で導入する機能で実際にどう変わるかを反映する。完全自動化でないなら残存時間を現実的に残す。</li>
+        <li>削減時間 ＝ BEFORE合計 − AFTER合計。年間削減時間 ＝ 日次削減時間 × 稼働日数、と算出根拠を明示。</li>
+        <li>削減で生まれた人員・時間の<b>再配置先を具体的に</b>書く（例：「○名分の時間を△△業務に充当」）。これが⑥⑦につながる。</li>
+      </ul>
+      <div class="lab-cau">▍提出前チェック</div>
+      <div class="checks">
+        <label class="chk"><span class="k">C</span><input type="checkbox" data-grp="c5"><span>BEFOREの件数・時間が、③経営課題の記述と一致している。</span></label>
+        <label class="chk"><span class="k">C</span><input type="checkbox" data-grp="c5"><span>AFTERの工程・時間が、④で説明した機能・仕組みと対応している。</span></label>
+        <label class="chk"><span class="k">C</span><input type="checkbox" data-grp="c5"><span>削減時間の計算（BEFORE合計−AFTER合計）と年間換算（×稼働日数）が正しい。</span></label>
+        <label class="chk"><span class="k">C</span><input type="checkbox" data-grp="c5"><span>残存時間が非現実的に少なくない（完全自動化でないのに0分になっていない）。</span></label>
+        <label class="chk"><span class="k">C</span><input type="checkbox" data-grp="c5"><span>削減リソースの<b>再配置先</b>が具体的に書かれている。</span></label>
+        <label class="chk"><span class="k">数</span><input type="checkbox" data-grp="c5"><span>総削減時間が<b>本文・別紙1・別紙2・数値計画で完全一致</b>している。</span></label>
+      </div>
+    </div>
+  </details>
+
+  <!-- 6 労働生産性・賃上げ -->
+  <details class="acc">
+    <summary><span class="num">⑥</span>労働生産性向上・賃上げ<span class="where">その2（Word）＋ その3（Excel）</span><span class="arw">▶</span></summary>
+    <div class="inner">
+      <div class="lab-points">▍書き方のポイント</div>
+      <ul class="clean">
+        <li>付加価値額・労働生産性が、基準年度から3年目にかけてどう伸びるかを、Excelの数字に沿って説明する。</li>
+        <li>賃上げ（給与支給総額・1人当たり給与）の計画を、要件（公募回ごとに確認）と整合させる。</li>
+      </ul>
+      <table>
+        <tr><th style="width:170px;">指標</th><th>計算式</th></tr>
+        <tr><td>付加価値額</td><td><span class="formula">営業利益 ＋ 人件費 ＋ 減価償却費</span></td></tr>
+        <tr><td>労働生産性</td><td><span class="formula">付加価値額 ÷ 従業員数（役員含む）</span></td></tr>
+        <tr><td>CAGR（年平均成長率）</td><td><span class="formula">(最終値 ÷ 初期値) ^ (1 ÷ n) − 1</span>　※ n＝基準年度から最終計画年度までの年数</td></tr>
+      </table>
+      <div class="callout warn"><span class="lab">⚠ よくある誤り</span>CAGRの<b>n</b>を数え間違える／従業員の増減計画があるのに1人当たり給与の計算が連動していない／変則決算の年換算根拠が示されていない。</div>
+      <div class="x3"><span class="xlab">その3</span><span>付加価値額・労働生産性・給与支給総額・1人当たり給与は、その3の<b>各欄</b>に入力します（CAGRは自動計算）。本文の記載値はこれと一致させます。</span></div>
+      <div class="lab-cau">▍提出前チェック</div>
+      <div class="checks">
+        <label class="chk"><span class="k">F</span><input type="checkbox" data-grp="c6"><span>付加価値額＝営業利益＋人件費＋減価償却費 で計算されている。</span></label>
+        <label class="chk"><span class="k">F</span><input type="checkbox" data-grp="c6"><span>労働生産性＝付加価値額÷従業員数（<b>役員含む</b>）で計算され、CAGRが目標（通常 年平均4%以上）を満たす。</span></label>
+        <label class="chk"><span class="k">E</span><input type="checkbox" data-grp="c6"><span>給与支給総額・1人当たり給与のCAGRが、最新公募回の<b>要件を満たす</b>。</span></label>
+        <label class="chk"><span class="k">E</span><input type="checkbox" data-grp="c6"><span>基準年度の給与支給総額・従業員数・1人当たり給与が、<b>直近決算と一致</b>している。</span></label>
+        <label class="chk"><span class="k">F</span><input type="checkbox" data-grp="c6"><span>本文記載のCAGR値・「基準年度○○千円→3年目○○千円」が、Excelの該当セルと一致している。</span></label>
+        <label class="chk"><span class="k">A</span><input type="checkbox" data-grp="c6"><span>変則決算の場合、年換算（×12÷月数）の方法と根拠を明示し、全箇所で一貫させている。</span></label>
+      </div>
+    </div>
+  </details>
+
+  <!-- 7 財務計画 -->
+  <details class="acc">
+    <summary><span class="num">⑦</span>財務計画・投資回収<span class="where">その2（Word）＋ その3（Excel）</span><span class="arw">▶</span></summary>
+    <div class="inner">
+      <div class="lab-points">▍書き方のポイント</div>
+      <ul class="clean">
+        <li>売上高・営業利益の見通しを、Excel数値計画の値で説明する。丸め表現は原数値と対照して妥当に。</li>
+        <li>投資回収は、削減コストの算出根拠（人件費単価×削減時間）を明示する。</li>
+      </ul>
+      <div class="callout def"><span class="lab">用語：投資回収期間</span>公募要領1-2(6)の事務局指定式 <span class="formula">投資額 ÷（削減工数 × 人件費単価 ＋ 増加した付加価値額）</span> で自動算出されます。<em>性質上しばしば短期間になり、回収期間の長短そのものは欠点になりません</em>。確認すべきは分子（削減工数・人件費単価・増加付加価値額）の<b>算出根拠の妥当性</b>です。</div>
+      <div class="x3"><span class="xlab">その3</span><span>売上高・営業利益はその3の<b>損益計算書</b>に、設備・開発の投資額は<b>取得価額（減価償却費の前提）</b>として入力します。</span></div>
+      <div class="lab-cau">▍提出前チェック</div>
+      <div class="checks">
+        <label class="chk"><span class="k">G</span><input type="checkbox" data-grp="c7"><span>投資総額（設備費・開発費等）が、申請書の他の箇所と一致している。</span></label>
+        <label class="chk"><span class="k">G</span><input type="checkbox" data-grp="c7"><span>年間削減コストの根拠（人件費単価 × 削減時間）が妥当である。</span></label>
+        <label class="chk"><span class="k">G</span><input type="checkbox" data-grp="c7"><span>人件費単価の算出方法（総人件費 ÷ 総労働時間）が明示されている。</span></label>
+        <label class="chk"><span class="k">B</span><input type="checkbox" data-grp="c7"><span>本文の全数値がExcel数値計画と一致し、丸め表現も原数値と対照して妥当である。</span></label>
+        <label class="chk"><span class="k">A</span><input type="checkbox" data-grp="c7"><span>直近が営業赤字・変則決算等で数値基盤が弱い場合、黒字化の道筋・資金調達の裏付けが本文にある。</span></label>
+      </div>
+    </div>
+  </details>
+
+  <!-- 8 実施体制・スケジュール -->
+  <details class="acc">
+    <summary><span class="num">⑧</span>実施体制・スケジュール<span class="where">その2 / Word</span><span class="arw">▶</span></summary>
+    <div class="inner">
+      <div class="lab-points">▍書き方のポイント</div>
+      <ul class="clean">
+        <li>誰が本事業を主体的に運用・遂行するか（外注する場合も含めた体制）を明示する。</li>
+        <li>スケジュール表は、採択発表→交付申請→交付決定→発注→納品・検収→運用開始の順序とタイミングを現実的に。</li>
+      </ul>
+      <div class="callout gold"><span class="lab">◆ 全体シナジーの論理経路（審査の計画面で重視）</span>「省力化する工程 → 創出する人数・時間 → 再配置先 → そこから生まれる売上／付加価値 → 数値計画」が<b>一本の線でつながっている</b>ことを確認します。時間を創出すると言いながら売上成長がほぼ無い、わずかな創出人員で大幅な売上増、といった飛躍は避けます。</div>
+      <div class="lab-cau">▍提出前チェック</div>
+      <div class="checks">
+        <label class="chk"><span class="k">D</span><input type="checkbox" data-grp="c8"><span>補助事業の開始月が、交付決定の想定時期と整合している。</span></label>
+        <label class="chk"><span class="k">D</span><input type="checkbox" data-grp="c8"><span>月ラベルが実際のタイムラインに対応し、事業計画期間の年度ラベルが<b>年度定義（基準年度・1〜3年目）と一致</b>している。</span></label>
+        <label class="chk"><span class="k">D</span><input type="checkbox" data-grp="c8"><span>★マークの配置が本文のスケジュール記述と整合し、完了（検収・納品）の時期が開発期間と矛盾しない。</span></label>
+        <label class="chk"><span class="k">D</span><input type="checkbox" data-grp="c8"><span>事業計画期間が3年なら、<b>4年目・5年目の列が不要に残っていない</b>。</span></label>
+        <label class="chk"><span class="k">J</span><input type="checkbox" data-grp="c8"><span>開発を外注しても、<b>当社が主体的に運用・遂行する体制</b>が示されている。</span></label>
+        <label class="chk"><span class="k">L</span><input type="checkbox" data-grp="c8"><span>省力化工程→創出リソース→再配置先→売上／付加価値→数値計画が、断絶なくつながっている。</span></label>
+      </div>
+    </div>
+  </details>
+
+  <div class="callout" style="margin-top:22px;">
+    <span class="lab">チェックの記号について</span>
+    <b>A</b>＝年度定義／<b>B</b>＝数値整合／<b>C</b>＝省力化効果／<b>D</b>＝スケジュール／<b>E</b>＝賃上げ／<b>F</b>＝付加価値・労働生産性／<b>G</b>＝投資回収／<b>H</b>＝直近実績／<b>J</b>＝適格性／<b>K</b>＝オーダーメイド設備／<b>L</b>＝全体シナジー。
+  </div>
+</section>
+
+<!-- ================= TAB 4 ================= -->
+<section class="panel" id="t4">
+  <h2 class="sec">用語集</h2>
+  <p class="sec-sub"><span class="pill must">最重要</span> が付いた用語は、間違えると全体の整合が崩れます。とくに年度定義は直感に反するので必ず確認してください。</p>
+
+  <div class="callout bad">
+    <span class="lab">✖ 最も間違えやすい：「1年目」≠「補助事業を実施する年度」</span>
+    補助事業が終了し本格運用を始めた後の、<b>最初の通年決算期</b>が「1年目」です。例：補助事業が2027年7月終了・決算が3月期なら、終了日を含む決算年度は2028年3月期、<b>1年目はその翌年度の2029年3月期</b>になります。
+  </div>
+
+  <div class="gloss">
+    <div class="term"><div class="t"><span class="star">★</span>基準年度 <span class="pill must">最重要</span></div><div class="d">直近決算年度（＝申請時点で最新の<em>確定決算期</em>）。数値計画・賃上げ・労働生産性のすべての「初期値」になります。</div></div>
+    <div class="term"><div class="t"><span class="star">★</span>1年目 <span class="pill must">最重要</span></div><div class="d"><em>補助事業終了日を含む決算年度の「翌年度」</em>。終了日を含む年度ではない点に注意。2年目・3年目はその後に続く決算期です。</div></div>
+    <div class="term"><div class="t">付加価値額 <span class="pill key">頻出</span></div><div class="d"><span class="formula">営業利益 ＋ 人件費 ＋ 減価償却費</span>。労働生産性の分子になります。</div></div>
+    <div class="term"><div class="t">労働生産性 <span class="pill key">頻出</span></div><div class="d"><span class="formula">付加価値額 ÷ 従業員数（役員含む）</span>。CAGRで通常<em>年平均4%以上</em>の向上が目標。</div></div>
+    <div class="term"><div class="t">CAGR（年平均成長率） <span class="pill key">頻出</span></div><div class="d"><span class="formula">(最終値÷初期値)^(1÷n) − 1</span>。<em>n＝基準年度から最終計画年度までの年数</em>。nの数え間違いに注意。</div></div>
+    <div class="term"><div class="t">給与支給総額</div><div class="d">従業員に支払う給与・賞与・各種手当の総額（役員報酬・法定福利費等の扱いは公募要領に従う）。CAGRが賃上げ要件の対象。</div></div>
+    <div class="term"><div class="t">1人当たり給与支給総額</div><div class="d"><span class="formula">給与支給総額 ÷ 従業員数</span>。従業員の増減計画があるときは計算を連動させること。</div></div>
+    <div class="term"><div class="t">省力化効果（BEFORE/AFTER） <span class="pill key">頻出</span></div><div class="d">導入前後の工程・作業時間の差。<em>削減時間＝BEFORE合計−AFTER合計</em>。本文・別紙1・別紙2・数値計画で完全一致させます。</div></div>
+    <div class="term"><div class="t">オーダーメイド設備 <span class="pill key">頻出</span></div><div class="d">業務に応じて専用設計された設備。汎用設備でも周辺機器・構成・機能が変わる／複数組み合わせる場合は該当。<em>汎用設備の単体導入は対象外</em>。</div></div>
+    <div class="term"><div class="t">投資回収期間</div><div class="d">事務局指定式 <span class="formula">投資額÷(削減工数×人件費単価＋増加付加価値額)</span> で自動算出。<em>長短そのものは問わず</em>、分子の根拠の妥当性を確認。</div></div>
+    <div class="term"><div class="t">人件費単価</div><div class="d"><span class="formula">総人件費 ÷ 総労働時間</span>。削減コスト（＝単価×削減時間）の算出根拠として明示します。</div></div>
+    <div class="term"><div class="t">変則決算／年換算</div><div class="d">基準年度の決算期間が12ヶ月未満の場合、<span class="formula">×12÷月数</span>で年換算。方法と根拠を本文・Excelで明示し、恣意的（成長率を操作）に見えないようにします。</div></div>
+    <div class="term"><div class="t">別紙1／別紙2</div><div class="d">別紙1＝省力化計算（削減時間の根拠を示す資料）、別紙2＝業務プロセス図（BEFORE/AFTERの工程図）。</div></div>
+  </div>
+
+  <div class="callout gold" style="margin-top:18px;">
+    <span class="lab">◆ 年度の算出手順（おすすめ）</span>
+    ① 決算月を確認 → ② 補助事業の終了予定日を確認 → ③ 終了日を含む決算年度を特定 → ④ その「翌年度」が1年目 → ⑤ 2年目・3年目を並べる → ⑥ Excelの列ヘッダー・本文・スケジュールの年度ラベルがこの並びと一致するか照合。
+  </div>
+</section>
+
+</div>
+
+<footer>
+  株式会社Essencimo｜執筆パートナー向け 内部資料。本ガイドは作成手順の補助を目的とし、最終的な要件は各公募回の<b>公募要領</b>を必ず確認してください。チェック状態はご利用の端末（ブラウザ）にのみ保存されます。
+</footer>
+
+<script>
+(function(){
+  // ----- Tabs -----
+  var tabs = document.querySelectorAll('#tabbar button');
+  var panels = document.querySelectorAll('.panel');
+  tabs.forEach(function(b){
+    b.addEventListener('click', function(){
+      tabs.forEach(function(x){x.classList.remove('active');});
+      panels.forEach(function(p){p.classList.remove('active');});
+      b.classList.add('active');
+      document.getElementById(b.dataset.tab).classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  });
+
+  // ----- Checkbox persistence (graceful if storage unavailable) -----
+  var KEY='essencimo_syouryokuka_guide_v1';
+  var store={};
+  try{ store=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ store={}; }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(store)); }catch(e){} }
+
+  var boxes=document.querySelectorAll('label.chk input[type=checkbox]');
+  boxes.forEach(function(cb,i){
+    cb.dataset.id = 'cb'+i;
+    if(store[cb.dataset.id]) cb.checked=true;
+    cb.addEventListener('change', function(){
+      store[cb.dataset.id]=cb.checked; save();
+    });
+  });
+
+  // ----- Group all / clear buttons -----
+  document.querySelectorAll('.toolbar button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var grp=btn.dataset.grp, on=(btn.dataset.act==='all');
+      document.querySelectorAll('input[data-grp="'+grp+'"]').forEach(function(cb){
+        cb.checked=on; store[cb.dataset.id]=on;
+      });
+      save();
+    });
+  });
+})();
+</script>
+</body>
+</html>
